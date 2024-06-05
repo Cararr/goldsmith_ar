@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Goldsmith - AR</title>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+</head>
+
+<body>
+  <model-viewer ar ar-modes="webxr scene-viewer quick-look" ar-scale="fixed" camera-controls="true"
+    interaction-prompt="none" shadow-intensity="1" interpolation-decay="40" disable-tap="true" touch-action="none"
+    max-field-of-view="auto" field-of-view="auto" ar-status="not-presenting"
+    style="width: 100dvw; height: 100dvh;"><button slot="ar-button" style="position: fixed; bottom: 5dvh; left:50%;
+      transform: translateX(-50%);">AR</button></model-viewer>
+
+
+
+
+  <script>
+
+    window.addEventListener("load", () => {
+
+      const searchParam = new URLSearchParams(window.location.search);
+      const modelSrc = searchParam.get('model');
+
+      if (!modelSrc) return;
+
+      const modelViewer = document.querySelector('model-viewer');
+      modelViewer.src = modelSrc;
+
+
+      modelViewer.addEventListener('model-visibility', (event) => {
+
+      });
+    });
+  </script>
+</body>
+
+</html>
